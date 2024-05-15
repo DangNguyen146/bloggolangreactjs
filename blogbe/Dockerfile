@@ -7,9 +7,6 @@ WORKDIR /
 # Sao chép mã nguồn vào thư mục làm việc trong container
 COPY . .
 
-# Sao chép script copy_env.sh vào thư mục làm việc trong container
-COPY copy_env.sh .
-
 # Tải và cài đặt dependencies
 RUN go mod download
 
