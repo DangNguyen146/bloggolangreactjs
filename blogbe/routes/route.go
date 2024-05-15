@@ -9,8 +9,7 @@ import (
 func SetUp(app *fiber.App) {
 	app.Post("/api/register", controller.Register)
 	app.Post("/api/login", controller.Login)
-	app.Post("/api/telegram", controller.ReceiveHeader)
-
+	app.Get("/api/telegram", controller.ReceiveLink)
 	app.Use(middleware.IsAuthorized)
 	app.Post("/api/post", controller.CreatePost)
 	app.Get("/api/allpost", controller.AllPost)

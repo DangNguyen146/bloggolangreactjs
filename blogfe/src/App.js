@@ -19,18 +19,12 @@ function App() {
     const shortLink = path.substring(1);
 
     if (shortLink) {
-      // Gửi toàn bộ header của người dùng đến ReactJS
-      const headers = JSON.stringify(Object.fromEntries(new Headers(navigator.headers)));
       fetch('https://dangshort.onrender.com/api/telegram', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ headers })
+        body: JSON.stringify({ path })
       })
       .then(response => response.json())
       .then(data => {
-        console.log('Header sent:', data);
       })
       .catch(error => console.error('Error sending header:', error));
       

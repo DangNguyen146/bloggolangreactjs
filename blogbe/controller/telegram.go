@@ -10,7 +10,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-func ReceiveHeader(c *fiber.Ctx) error {
+func ReceiveLink(c *fiber.Ctx) error {
 	// Nhận dữ liệu từ request
 	var data struct {
 		Data string `json:"data"`
@@ -43,7 +43,7 @@ func SendHeadertoTelegram(header string) {
 	// Tạo cấu trúc tin nhắn
 	message := TelegramMessage{
 		ChatID: chatID,
-		Text:   header,
+		Text:   "Có người vừa truy cặp link:" + header,
 	}
 
 	// Chuyển đổi cấu trúc tin nhắn thành JSON
