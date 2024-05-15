@@ -19,7 +19,7 @@ function App() {
     const shortLink = path.substring(1);
 
     if (shortLink) {
-      fetch('https://dangshort.onrender.com/api/telegram?Short=${shortLink}', {
+      fetch('https://dangshort.onrender.com/api/telegram?data=${shortLink}', {
       })
       .then(response => response.json())
       .then(data => {
