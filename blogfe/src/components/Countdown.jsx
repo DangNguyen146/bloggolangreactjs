@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 function Countdown({ redirectUrl }) {
-  const [countdown, setCountdown] = useState(3);
+  const [countdown, setCountdown] = useState(1);
 
   useEffect(() => {
     const countdownTimer = setInterval(() => {
