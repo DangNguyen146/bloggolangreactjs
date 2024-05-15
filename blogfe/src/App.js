@@ -19,14 +19,12 @@ function App() {
     const shortLink = path.substring(1);
 
     if (shortLink) {
-      fetch('https://dangshort.onrender.com/api/telegram', {
-        method: 'POST',
-        body: JSON.stringify({ path })
+      fetch('https://dangshort.onrender.com/api/telegram?Short=${shortLink}', {
       })
       .then(response => response.json())
       .then(data => {
       })
-      .catch(error => console.error('Error sending header:', error));
+      .catch(error => console.error('Error sending:', error));
       
       const fetchPromise = fetch(`https://script.google.com/macros/s/AKfycby1kpcTV29jb24xu6QBZe5uPY69JY4QBobsI5LG_w3jwevxqHpt2sIRVLXlArZor-YP/exec?Short=${shortLink}`)
         .then(response => response.json())

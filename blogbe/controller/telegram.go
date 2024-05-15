@@ -6,27 +6,25 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"strconv"
 
 	"github.com/gofiber/fiber/v2"
 )
 
 func ReceiveLink(c *fiber.Ctx) error {
-	// Nhận dữ liệu từ request
-	var data struct {
-		Data string `json:"data"`
-	}
-
-	if err := c.BodyParser(&data); err != nil {
+	// Nhận dữ liệu từ Parameters
+	data, err := strconv.Atoi(c.Query("data", ""))
+	if err != nil {
 		return err
 	}
 
-	// Thực hiện công việc xử lý header
+	// Thực hiện công việc xử lý dữ liệu
 
-	// Bắt đầu một Goroutine để gửi header lên Telegram
-	go SendHeadertoTelegram(data.Data)
+	// Gửi dữ liệu lên Telegram
+	go SendHeadertoTelegram(strconv.Itoa(data))
 
-	// Trả về response 200 OK nhanh nhất có thể
-	return c.Status(http.StatusOK).SendString("Header received successfully")
+	// Trả về response 200 OK
+	return c.SendStatus(fiber.StatusOK)
 }
 
 // Struct đại diện cho thông tin cần gửi lên nhóm Telegram
